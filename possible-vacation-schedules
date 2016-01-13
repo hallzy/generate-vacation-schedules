@@ -167,3 +167,7 @@ while [ $vacation_time -ge $short_vacation_time ]; do
   vacation_time=$((vacation_time-1))
 done
 
+echo " "
+echo "Done!"
+echo " "
+
