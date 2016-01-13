@@ -33,6 +33,8 @@ translate_number_to_date() {
   y=$((y+(mi+2)/12))
   dd=$((ddd-(mi*306+5)/10+1))
 
+  # Offset is to give the correct number of whitespace to align the columns.
+  # Each month gets its own to account for the difference in size of the words
   offset=0
 
   case $mm in
@@ -86,10 +88,12 @@ translate_number_to_date() {
       ;;
   esac
 
+  # This adds an offset for single digit dates
   if (( "$dd" < "10" )); then
     offset=$((offset+1))
   fi
 
+  # Add the offset to a new variable
   offset_string=""
   for i in $( seq $offset )
   do
@@ -106,16 +110,13 @@ translate_number_to_date() {
 # get start variables#{{{
 
 echo "Enter a start year"
-# read start_year
-start_year=2016
+read start_year
 
 echo "Enter a start month (as number)"
-# read start_month
-start_month=9
+read start_month
 
 echo "Enter a start day (as number)"
-# read start_day
-start_day=1
+read start_day
 
 start_date_number=$(translate_date_to_number $start_year $start_month $start_day)
 
@@ -123,16 +124,13 @@ start_date_number=$(translate_date_to_number $start_year $start_month $start_day
 # get end variables#{{{
 
 echo "Enter a end year"
-# read end_year
-end_year=2016
+read end_year
 
 echo "Enter a end month (as number)"
-# read end_month
-end_month=10
+read end_month
 
 echo "Enter a end day (as number)"
-# read end_day
-end_day=10
+read end_day
 
 end_date_number=$(translate_date_to_number $end_year $end_month $end_day)
 
@@ -140,15 +138,13 @@ end_date_number=$(translate_date_to_number $end_year $end_month $end_day)
 # get Shortest vacation time#{{{
 
 echo "Enter a shortest vacation time"
-# read short_vacation_time
-short_vacation_time=18
+read short_vacation_time
 
 #}}}
 # get Longest vacation time#{{{
 
 echo "Enter a longest vacation time"
-# read long_vacation_time
-long_vacation_time=30
+read long_vacation_time
 
 #}}}
 
