@@ -22,9 +22,10 @@ translate_date_to_number() {
 
 translate_number_to_date() {
   g=$1
-  y=$(((10000*g+14780)/3652425))
+  # y=$(((10000*g+14780)/3652425))
+  y=$((4*(500*g+739)/730485))
   ddd=$((g -(365*y+y/4-y/100+y/400)))
-  if ((""$ddd"" < "0" )); then
+  if (("$ddd" < "0" )); then
     y=$((y-1))
     ddd=$((g-(365*y+y/4-y/100+y/400)))
   fi
@@ -170,4 +171,6 @@ done
 echo " "
 echo "Done!"
 echo " "
+
+
 
