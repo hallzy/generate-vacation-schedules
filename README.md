@@ -8,6 +8,15 @@ time to shortest.
 
 Note that I have only tested on Ubuntu 14.04 LTS.
 
+Also, I recommend using a Linux Distro like Ubuntu, since I have tested it on
+this and it runs very fast on it. Mac is untested, but should be the same
+instructions as Linux. Windows takes a long time because of the program that
+needs to be installed, and the script takes longer to run in this program than
+it does in Linux.
+
+Therefore, if you are able to use Linux, natively or in a virtual machine, I
+would recommend that over Windows.
+
 ###Windows
 
 Download and install Babun.
@@ -35,7 +44,11 @@ location, type "%USERPROFILE%\.babun\babun.bat. Click next. Now you can name the
 shortcut whatever you want. It is fine to leave it as the default "babun.bat".
 Now click the "Finish" button. Now to start Babun, just double click the new
 shortcut on your desktop. Everything should work fine and you should eventually
-see a black screen that has "{ ~  }  >>". This means that it worked.
+see a black screen that has "{ ~ }  >>". This means that it worked.
+
+If you see a whole bunch of errors and don't get that nice prompt, something
+went wrong. What I did to solve this is restart my computer because there was
+probably another process that was using the DLLs that Babun was trying to use.
 
 Now we need to get the program on this page.
 
