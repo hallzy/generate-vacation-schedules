@@ -17,8 +17,9 @@ After installation, follow the instructions for "Mac OSX or Linux", except use
 your terminal emulator to open the terminal.
 
 Note, that in my test, the script ran significantly slower in cygwin than it did
-in the Ubuntu Terminal (probably at least 2 minutes. The Ubuntu terminal
-finished running the script in no more than 1 second).
+in the Ubuntu Terminal (For an execution that produced 222 combinations, it took
+about 2 seconds on the Ubuntu Terminal, but it took about 6 minutes on Windows
+in Cygwin).
 
 ### Mac OSX or Linux
 
