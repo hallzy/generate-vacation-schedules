@@ -10,16 +10,63 @@ Note that I have only tested on Ubuntu 14.04 LTS.
 
 ###Windows
 
-Download and install cygwin (or some other terminal emulator for windows. I have
-just tested cygwin).
+Download and install Babun.
 
-After installation, follow the instructions for "Mac OSX or Linux", except use
-your terminal emulator to open the terminal.
+To install babun:
 
-Note, that in my test, the script ran significantly slower in cygwin than it did
-in the Ubuntu Terminal (For an execution that produced 222 combinations, it took
-about 2 seconds on the Ubuntu Terminal, but it took about 6 minutes on Windows
-in Cygwin).
+Press the "Download now" button on [this page](https://babun.github.io/)
+
+Download it to the Desktop for simplicity.
+
+When it is finished downloading, unzip the zip file onto the desktop. There
+should now be a folder on your desktop called "babun-1.2.0". The number may be
+different, this just happens to be the version available while I am doing this.
+
+You can now delete the zip file.
+
+Open the folder, and double click the "install.bat" file. The installation takes
+about 22 minutes.
+
+You can now exit that folder and delete it.
+
+At this point it is probably easier to create a shortcut on the desktop. To do
+this, right click the desktop, go to "new" and then click "shortcut". In the
+location, type "%USERPROFILE%\.babun\babun.bat. Click next. Now you can name the
+shortcut whatever you want. It is fine to leave it as the default "babun.bat".
+Now click the "Finish" button. Now to start Babun, just double click the new
+shortcut on your desktop. Everything should work fine and you should eventually
+see a black screen that has "{ ~  }  >>". This means that it worked.
+
+Now we need to get the program on this page.
+
+Download the project as a Zip file to your desktop (Press the "Download Zip"
+button). Unzip that file, and go into the folder. Cut the file called
+"possible-vacation-schedules", and paste it onto your desktop screen. You may
+delete the folder that the script was in now. We now need to copy that file to
+"%USERPROFILE%\.babun\cygwin\home\<username>" where username is your user.
+
+The easiest way to do this is to cut the file. Then open windows explorer and
+type this into the address bar "%USERPROFILE%\.babun\cygwin\home". Now press
+enter. There should only be one folder that you see which will be your username.
+Double click this. Now paste the file that we cut earlier.
+
+Go back to the Babun window, and enter these commands:
+
+```bash
+cd ~
+bash possible-vacation-schedules
+```
+
+Answer the questions that you are prompted for with numbers only.
+
+When the script is done, a statement that says "Done!" will appear. Note: this
+script takes about 6 minutes to run on Windows when I last tried it (Mac OSX,
+and Linux take about 2 seconds).
+
+At this point a file called "schedule.txt" will be created. Now go back to
+"%USERPROFILE%\.babun\cygwin\home\<username>". There will be a file called
+"schedule.txt" visible now. This contains the schedule. Feel free to move it
+anywhere.
 
 ### Mac OSX or Linux
 
@@ -36,7 +83,8 @@ bash possible-vacation-schedules
 
 Answer the questions that you are prompted for with numbers only.
 
-When the script is done, a statement that says "Done!" will appear.
+When the script is done, a statement that says "Done!" will appear. This should
+only take a few seconds.
 
 At this point a file called "schedule.txt" will be on you desktop screen. You
 can close the terminal and open this text file to see the schedules that fit
