@@ -50,6 +50,8 @@ If you see a whole bunch of errors and don't get that nice prompt, something
 went wrong. What I did to solve this is restart my computer because there was
 probably another process that was using the DLLs that Babun was trying to use.
 
+*If you have babun installed start here*
+
 Now we need to get the program on this page.
 
 Download the project as a Zip file to your desktop (Press the "Download Zip"
@@ -62,6 +64,9 @@ The easiest way to do this is to cut the file. Then open windows explorer and
 type this into the address bar "%USERPROFILE%\.babun\cygwin\home". Now press
 enter. There should only be one folder that you see which will be your username.
 Double click this. Now paste the file that we cut earlier.
+
+*If Babun is installed, and the section above has been done previously, start
+here*
 
 Go back to the Babun window, and enter these commands:
 
@@ -86,6 +91,8 @@ anywhere.
 Download the project as a Zip file to your desktop. Unzip that file, and go into
 the folder. Cut the file called "possible-vacation-schedules", and paste it onto
 your desktop screen. You may delete the folder that the script was in now.
+
+*If you have previously done the above step, start here*
 
 Open a terminal and enter these commands:
 
