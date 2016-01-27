@@ -108,46 +108,63 @@ translate_number_to_date() {
 
 #}}}
 
-# get start variables#{{{
+if [[ "$1" == "test" ]]; then
+  start_year=2016
+  start_month=9
+  start_day=1
+  start_date_number=$(translate_date_to_number \
+                      $start_year $start_month $start_day)
+  end_year=2016
+  end_month=10
+  end_day=10
+  end_date_number=$(translate_date_to_number $end_year $end_month $end_day)
 
-echo "Enter a start year"
-read start_year
+  short_vacation_time=18
+  long_vacation_time=30
+else
+  # get start variables#{{{
 
-echo "Enter a start month (as number)"
-read start_month
+  echo "Enter a start year"
+  read start_year
 
-echo "Enter a start day (as number)"
-read start_day
+  echo "Enter a start month (as number)"
+  read start_month
 
-start_date_number=$(translate_date_to_number $start_year $start_month $start_day)
+  echo "Enter a start day (as number)"
+  read start_day
 
-#}}}
-# get end variables#{{{
+  start_date_number=$(translate_date_to_number \
+    $start_year $start_month $start_day)
 
-echo "Enter a end year"
-read end_year
+  #}}}
+  # get end variables#{{{
 
-echo "Enter a end month (as number)"
-read end_month
+  echo "Enter a end year"
+  read end_year
 
-echo "Enter a end day (as number)"
-read end_day
+  echo "Enter a end month (as number)"
+  read end_month
 
-end_date_number=$(translate_date_to_number $end_year $end_month $end_day)
+  echo "Enter a end day (as number)"
+  read end_day
 
-#}}}
-# get Shortest vacation time#{{{
+  end_date_number=$(translate_date_to_number $end_year $end_month $end_day)
 
-echo "Enter a shortest vacation time"
-read short_vacation_time
+  #}}}
+  # get Shortest vacation time#{{{
 
-#}}}
-# get Longest vacation time#{{{
+  echo "Enter a shortest vacation time"
+  read short_vacation_time
 
-echo "Enter a longest vacation time"
-read long_vacation_time
+  #}}}
+  # get Longest vacation time#{{{
 
-#}}}
+  echo "Enter a longest vacation time"
+  read long_vacation_time
+
+  #}}}
+fi
+
 
 echo "Start Date            End Date              Duration" > schedule_tmp.txt
 echo "----------------------------------------------------" >> schedule_tmp.txt
