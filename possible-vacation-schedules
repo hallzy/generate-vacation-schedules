@@ -179,11 +179,14 @@ while [ $vacation_time -ge $short_vacation_time ]; do
   while [ $end_vacation_span -le $end_date_number ]; do
     # Add entry to file
     echo "$(translate_number_to_date $start_vacation_span)    $(translate_number_to_date $end_vacation_span)    $vacation_time" >> schedule_tmp.txt
+
     start_vacation_span=$((start_vacation_span+1))
     end_vacation_span=$((end_vacation_span+1))
     total=$((total+1))
   done
-  echo "----------------------------------------------------" >> schedule_tmp.txt
+  echo "----------------------------------------------------" \
+        >> schedule_tmp.txt
+
   vacation_time=$((vacation_time-1))
 done
 
