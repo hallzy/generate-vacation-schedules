@@ -4,6 +4,8 @@
 
 # translate date to number#{{{
 
+# convert date to a julian day number
+# https://en.wikipedia.org/wiki/Julian_day
 translate_date_to_number() {
   y=$1
   m=$2
@@ -20,6 +22,8 @@ translate_date_to_number() {
 #}}}
 # translate nuber to date#{{{
 
+# Translate a Julian day number, to a date
+# https://en.wikipedia.org/wiki/Julian_day
 translate_number_to_date() {
   g=$1
   # y=$(((10000*g+14780)/3652425))
