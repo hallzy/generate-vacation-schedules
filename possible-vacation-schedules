@@ -200,8 +200,7 @@ echo " "
 echo "Total: $total"
 echo " "
 
-echo "Total Entries: $total" > schedule.txt
-echo " " >> schedule.txt
+echo -e "Total Entries: $total\n" > schedule.txt
 cat schedule_tmp.txt >> schedule.txt
 
 rm -rf schedule_tmp.txt
