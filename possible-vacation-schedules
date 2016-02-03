@@ -212,5 +212,3 @@ cat schedule_tmp.txt >> schedule.txt
 
 rm -rf schedule_tmp.txt
 
-
-
