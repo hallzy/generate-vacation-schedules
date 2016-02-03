@@ -181,8 +181,15 @@ while [ $vacation_time -ge $short_vacation_time ]; do
   end_vacation_span=$((start_vacation_span+vacation_time-1))
 
   while [ $end_vacation_span -le $end_date_number ]; do
+    # Separate the arguments for echo into 3 different variables to make the
+    # lines shorter
+    a=$(translate_number_to_date $start_vacation_span)
+    b=$(translate_number_to_date $end_vacation_span)
+    c=$vacation_time
+
     # Add entry to file
-    echo "$(translate_number_to_date $start_vacation_span)    $(translate_number_to_date $end_vacation_span)    $vacation_time" >> schedule_tmp.txt
+    #     start end   duration
+    echo "$a    $b    $c" >> schedule_tmp.txt
 
     start_vacation_span=$((start_vacation_span+1))
     end_vacation_span=$((end_vacation_span+1))
