@@ -170,8 +170,8 @@ else
 fi
 
 
-echo "Start Date            End Date              Duration" > schedule_tmp.txt
-echo "----------------------------------------------------" >> schedule_tmp.txt
+echo "|Start Date|End Date|Duration|" > schedule_tmp.txt
+echo "|:-:|:-:|:-:|" >> schedule_tmp.txt
 
 vacation_time=$long_vacation_time
 total=0
@@ -189,14 +189,18 @@ while [ $vacation_time -ge $short_vacation_time ]; do
 
     # Add entry to file
     #     start end   duration
-    echo "$a    $b    $c" >> schedule_tmp.txt
+    echo "|$a|$b|$c|" >> schedule_tmp.txt
 
     start_vacation_span=$((start_vacation_span+1))
     end_vacation_span=$((end_vacation_span+1))
     total=$((total+1))
   done
-  echo "----------------------------------------------------" \
-        >> schedule_tmp.txt
+  if [ $vacation_time -gt $short_vacation_time ]; then
+    echo "|" >> schedule_tmp.txt
+    echo "|" >> schedule_tmp.txt
+    echo "|" >> schedule_tmp.txt
+    echo "|" >> schedule_tmp.txt
+  fi
 
   vacation_time=$((vacation_time-1))
 done
@@ -207,8 +211,12 @@ echo " "
 echo "Total: $total"
 echo " "
 
-echo -e "Total Entries: $total\n" > schedule.txt
+echo -e "## Total Entries: $total" > schedule.txt
+echo -e " " >> schedule.txt
 cat schedule_tmp.txt >> schedule.txt
 
 rm -rf schedule_tmp.txt
+cp -f schedule.txt schedule.md
+
+gimli -f schedule.md
 
