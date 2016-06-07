@@ -26,7 +26,6 @@ translate_date_to_number() {
 # https://en.wikipedia.org/wiki/Julian_day
 translate_number_to_date() {
   g=$1
-  # y=$(((10000*g+14780)/3652425))
   y=$((4*(500*g+739)/730485))
   ddd=$((g -(365*y+y/4-y/100+y/400)))
   if (("$ddd" < "0" )); then
@@ -38,74 +37,14 @@ translate_number_to_date() {
   y=$((y+(mi+2)/12))
   dd=$((ddd-(mi*306+5)/10+1))
 
-  # Offset is to give the correct number of whitespace to align the columns.
-  # Each month gets its own to account for the difference in size of the words
-  offset=0
+  MONTHS=(DUMMY January February March April May June July August September)
+  MONTHS+=(October November December)
 
-  case $mm in
-    1)
-      mm="January"
-      offset=$((offset+2))
-      ;;
-    2)
-      mm="February"
-      offset=$((offset+1))
-      ;;
-    3)
-      mm="March"
-      offset=$((offset+4))
-      ;;
-    4)
-      mm="April"
-      offset=$((offset+4))
-      ;;
-    5)
-      mm="May"
-      offset=$((offset+6))
-      ;;
-    6)
-      mm="June"
-      offset=$((offset+5))
-      ;;
-    7)
-      mm="July"
-      offset=$((offset+5))
-      ;;
-    8)
-      mm="August"
-      offset=$((offset+3))
-      ;;
-    9)
-      mm="September"
-      offset=$((offset+0))
-      ;;
-    10)
-      mm="October"
-      offset=$((offset+2))
-      ;;
-    11)
-      mm="November"
-      offset=$((offset+1))
-      ;;
-    12)
-      mm="December"
-      offset=$((offset+1))
-      ;;
-  esac
+  # Give the months actual names
+  mm="${MONTHS[$mm]}"
 
-  # This adds an offset for single digit dates
-  if (( "$dd" < "10" )); then
-    offset=$((offset+1))
-  fi
-
-  # Add the offset to a new variable
-  offset_string=""
-  for i in $( seq $offset )
-  do
-    offset_string=$offset_string" "
-  done
-  echo "$mm $dd, $y$offset_string"
-
+  # ex November 23, 2016
+  echo "$mm $dd, $y"
 }
 
 #}}}
