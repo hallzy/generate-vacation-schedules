@@ -152,12 +152,12 @@ echo " "
 echo "Total: $total"
 echo " "
 
-echo -e "## Total Entries: $total" > schedule.txt
-echo -e " " >> schedule.txt
-cat schedule_tmp.txt >> schedule.txt
+echo -e "## Total Entries: $total" > schedule.md
+echo -e " " >> schedule.md
+cat schedule_tmp.txt >> schedule.md
 
 rm -rf schedule_tmp.txt
-mv schedule.txt schedule.md
 
+# Convert markdown to pdf
 gimli -f schedule.md
 
