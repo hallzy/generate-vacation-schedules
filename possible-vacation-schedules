@@ -138,7 +138,7 @@ else
   read start_day
 
   start_date_number=$(translate_date_to_number \
-    $start_year $start_month $start_day)
+    "$start_year" "$start_month" "$start_day")
 
   #}}}
   # get end variables#{{{
@@ -152,7 +152,7 @@ else
   echo "Enter a end day (as number)"
   read end_day
 
-  end_date_number=$(translate_date_to_number $end_year $end_month $end_day)
+  end_date_number=$(translate_date_to_number "$end_year" "$end_month" "$end_day")
 
   #}}}
   # get Shortest vacation time#{{{
@@ -176,15 +176,15 @@ echo "|:-:|:-:|:-:|" >> schedule_tmp.txt
 vacation_time=$long_vacation_time
 total=0
 
-while [ $vacation_time -ge $short_vacation_time ]; do
+while [ "$vacation_time" -ge "$short_vacation_time" ]; do
   start_vacation_span=$start_date_number
   end_vacation_span=$((start_vacation_span+vacation_time-1))
 
-  while [ $end_vacation_span -le $end_date_number ]; do
+  while [ "$end_vacation_span" -le "$end_date_number" ]; do
     # Separate the arguments for echo into 3 different variables to make the
     # lines shorter
-    a=$(translate_number_to_date $start_vacation_span)
-    b=$(translate_number_to_date $end_vacation_span)
+    a=$(translate_number_to_date "$start_vacation_span")
+    b=$(translate_number_to_date "$end_vacation_span")
     c=$vacation_time
 
     # Add entry to file
@@ -195,11 +195,13 @@ while [ $vacation_time -ge $short_vacation_time ]; do
     end_vacation_span=$((end_vacation_span+1))
     total=$((total+1))
   done
-  if [ $vacation_time -gt $short_vacation_time ]; then
-    echo "|" >> schedule_tmp.txt
-    echo "|" >> schedule_tmp.txt
-    echo "|" >> schedule_tmp.txt
-    echo "|" >> schedule_tmp.txt
+  if [ "$vacation_time" -gt "$short_vacation_time" ]; then
+    {
+      echo "|"
+      echo "|"
+      echo "|"
+      echo "|"
+    } >> schedule_tmp.txt
   fi
 
   vacation_time=$((vacation_time-1))
@@ -216,7 +218,7 @@ echo -e " " >> schedule.txt
 cat schedule_tmp.txt >> schedule.txt
 
 rm -rf schedule_tmp.txt
-cp -f schedule.txt schedule.md
+mv schedule.txt schedule.md
 
 gimli -f schedule.md
 
