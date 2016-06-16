@@ -6,7 +6,7 @@
 
 # convert date to a julian day number
 # https://en.wikipedia.org/wiki/Julian_day
-translate_date_to_number() {
+function translate_date_to_number() {
   y=$1
   m=$2
   d=$3
@@ -24,7 +24,7 @@ translate_date_to_number() {
 
 # Translate a Julian day number, to a date
 # https://en.wikipedia.org/wiki/Julian_day
-translate_number_to_date() {
+function translate_number_to_date() {
   g=$1
   y=$((4*(500*g+739)/730485))
   ddd=$((g -(365*y+y/4-y/100+y/400)))
