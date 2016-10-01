@@ -109,6 +109,29 @@ else
 fi
 
 
+# Check that start date is actually before end date
+if [ "$start_date_number" -gt "$end_date_number" ]; then
+  echo "Error: Start date is after end date."
+  exit;
+fi
+
+# Check that the defined long vacation time is actually longer than the short
+# time
+if [ "$long_vacation_time" -lt "$short_vacation_time" ]; then
+  echo "Error: Long vacation time is shorter than short vacation time"
+  exit;
+fi
+
+
+# if the dates defined by the user are a shorter span than the longest vacation
+# span, then we will shorten the longest vacation span to the span of the
+# defined dates
+days_between_start_and_end=$((end_date_number-start_date_number+1))
+if [ "$days_between_start_and_end" -lt "$long_vacation_time" ]; then
+  long_vacation_time=$days_between_start_and_end
+fi
+
+
 echo "|Start Date|End Date|Duration|" > schedule_tmp.txt
 echo "|:-:|:-:|:-:|" >> schedule_tmp.txt
 
