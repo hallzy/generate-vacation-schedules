@@ -22,7 +22,7 @@ if ($diff_day <= 0) {
 }
 
 if ($diff_day < $longest_vacation) {
-  $longest_vacation = $diff_days;
+  $longest_vacation = $diff_day;
 }
 
 echo "<table border=\"1\">";
