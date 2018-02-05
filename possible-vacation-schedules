@@ -4,7 +4,7 @@
 
 # translate date to number#{{{
 
-# convert date to a julian day number
+# convert date to a Julian day number
 # https://en.wikipedia.org/wiki/Julian_day
 function translate_date_to_number() {
   y=$1
@@ -20,7 +20,7 @@ function translate_date_to_number() {
 }
 
 #}}}
-# translate nuber to date#{{{
+# translate number to date#{{{
 
 # Translate a Julian day number, to a date
 # https://en.wikipedia.org/wiki/Julian_day
@@ -181,6 +181,6 @@ cat schedule_tmp.txt >> schedule.md
 
 rm -rf schedule_tmp.txt
 
-# Convert markdown to pdf
+# Convert markdown to PDF
 gimli -f schedule.md
 

@@ -6,10 +6,10 @@ time to shortest.
 
 ## Usage
 
-Note that I have only tested on Ubuntu 14.04 LTS.
+Note that I have only tested on Ubuntu.
 
-Also, I recommend using a Linux Distro like Ubuntu, since I have tested it on
-this and it runs very fast on it. Mac is untested, but should be the same
+Also, I recommend using a Linux Distribution like Ubuntu, since I have tested it
+on this and it runs very fast on it. Mac is untested, but should be the same
 instructions as Linux. Windows takes a long time because of the program that
 needs to be installed, and the script takes longer to run in this program than
 it does in Linux.
