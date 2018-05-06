@@ -12,12 +12,43 @@
 <?php
 $get_sd = $_GET["start_date"];
 $start_date = strtotime("$get_sd");
+if (empty($start_date)) {
+  echo "ERROR: Start Date wasn't a date.";
+  return;
+}
 
 $get_ed = $_GET["end_date"];
 $end_date   = strtotime("$get_ed");
+if (empty($end_date)) {
+  echo "ERROR: End Date wasn't a date.";
+  return;
+}
 
 $shortest_vacation=$_GET["shortest_vacation"];
+// This only evaluates true if $shortest_vacation is an integer in string form
+if ((string)(int)$shortest_vacation !== $shortest_vacation) {
+  echo "ERROR: Shortest Vacation Length wasn't an integer.";
+  return;
+}
+if ($shortest_vacation < 1) {
+  echo "ERROR: Shortest Vacation Length is not a valid number.";
+  return;
+}
+
 $longest_vacation=$_GET["longest_vacation"];
+// This only evaluates true if $shortest_vacation is an integer in string form
+if ((string)(int)$longest_vacation !== $longest_vacation) {
+  echo "ERROR: Longest Vacation Length wasn't an integer.";
+  return;
+}
+if ($longest_vacation < 1) {
+  echo "ERROR: Longest Vacation Length is not a valid number.";
+  return;
+}
+
+if (!isset($start_date) || !isset($end_date) ||
+    !isset($shortest_vacation) || !isset($longest_vacation)) {
+}
 
 if ($longest_vacation < $shortest_vacation) {
   echo "Error, Long Vacation time must be bigger than Short Vacation Time";
@@ -36,13 +67,13 @@ if ($diff_day < $longest_vacation) {
   $longest_vacation = $diff_day;
 }
 
-echo "<table border=\"1\">";
-echo "<tr>";
-  echo "<th>Number</th>";
-  echo "<th>Start Date</th>";
-  echo "<th>End Date</th>";
-  echo "<th>Duration</th>";
-echo "</tr>";
+echo "<table border=\"1\" style=\"text-align: center\">\n";
+echo "  <tr>";
+echo "<th>Number</th>";
+echo "<th>Vacation Start Date</th>";
+echo "<th>Vacation End Date</th>";
+echo "<th>Vacation Duration (Days)</th>";
+echo "</tr>\n";
 
 $vacation_time = $longest_vacation;
 $total = 1;
@@ -58,12 +89,12 @@ while ($vacation_time >= $shortest_vacation) {
     $a = date("F j, Y", $a);
     $b = date("F j, Y", $b);
     $c = $vacation_time;
-    echo "<tr>";
+    echo "  <tr>";
     echo "<td>$total</td>";
     echo "<td>$a</td>";
     echo "<td>$b</td>";
     echo "<td>$c</td>";
-    echo "</tr>";
+    echo "</tr>\n";
 
     $start_vacation_span++;
     $end_vacation_span++;
@@ -72,6 +103,24 @@ while ($vacation_time >= $shortest_vacation) {
 
   $vacation_time--;
 
+  if ($vacation_time >= $shortest_vacation) {
+    // These are just separators to make it more obvious where the different
+    // vacation lengths begin and end
+    echo "  <!-- BEGIN SEPARATOR -->\n";
+    echo "  <tr>";
+    echo "<th></th>";
+    echo "<th></th>";
+    echo "<th></th>";
+    echo "<th></th>";
+    echo "</tr>\n";
+    echo "  <tr>";
+    echo "<th></th>";
+    echo "<th></th>";
+    echo "<th></th>";
+    echo "<th></th>";
+    echo "</tr>\n";
+    echo "  <!-- END SEPARATOR -->\n";
+  }
 }
 
 echo "</table>";
